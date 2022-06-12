@@ -1,0 +1,5 @@
+# List file and folders 
+ls [path]
+
+# Copy files or folders
+cp -r [origin-path] [destination-path]
