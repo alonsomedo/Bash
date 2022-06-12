@@ -1,5 +1,45 @@
 # List file and folders 
 ls [path]
 
-# Copy files or folders
+# Copy files or folders 
+# r: recursive
 cp -r [origin-path] [destination-path]
+
+# Create a folder
+mkdir [folder-name]
+
+# Move folder or files
+# r: recursive
+mv -r [folder/file path] [destination-path]
+
+# Delete folder or file
+# r: recursive | f: force
+rm -rf [folder/file name]
+
+# Create a file
+# touch is used to create empty files
+touch [file_name]
+
+# See the text inside a file
+cat [file-name]
+
+# Write in a text file
+echo "text" > [file-name]
+
+# Write in a text file but in a new line
+echo "text" >> [file-name]
+
+# Commands about disk usage
+# df (disk free) brings information about system partitions. 
+# du (disk usage) brings information about the usage disk of the selected path
+# h: shows in kb, mb, gb | s: avoid recursiviness in a directory
+df 
+df -sh [path]
+du -sh [path]
+
+# Links
+# ln creates a strong link by default using -s we create a soft link 
+# a strong link points information to the disk, only works for files
+# a soft link points to the path
+ln [file] [mapping_link]
+ 
