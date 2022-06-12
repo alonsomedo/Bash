@@ -1,8 +1,13 @@
+# ------------------------------------------------
+# PRINCIPAL LINUX COMMANDS
+# ------------------------------------------------
+
 # List file and folders 
 ls [path]
 
 # Copy files or folders 
 # r: recursive
+# When we copy a file, the copied file get as owner the user that executes the command.
 cp -r [origin-path] [destination-path]
 
 # Create a folder
@@ -23,10 +28,10 @@ touch [file_name]
 # See the text inside a file
 cat [file-name]
 
-# Write in a text file
+# Overwrite in a text file
 echo "text" > [file-name]
 
-# Write in a text file but in a new line
+# Append in a text file
 echo "text" >> [file-name]
 
 # Commands about disk usage
@@ -42,4 +47,26 @@ du -sh [path]
 # a strong link points information to the disk, only works for files
 # a soft link points to the path
 ln [file] [mapping_link]
- 
+ln -s [file] [mapping_link] 
+
+# Special characters
+asterisk symbol (*) is equivalent to any sequence of character in the name of an element
+interrogation symbol (?) is equivalent just to one character
+
+# -------------------------------------------------
+# PERMISSIONS 
+# -------------------------------------------------
+
+# Enter as a root user 
+sudo su
+sudo -i
+
+# Users always belongs to a group, also they can be part of different groups
+# Group the user belongs
+group
+id
+# To identify myself
+whoami
+
+
+
