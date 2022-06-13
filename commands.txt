@@ -64,9 +64,65 @@ sudo -i
 # Users always belongs to a group, also they can be part of different groups
 # Group the user belongs
 group
-id
+id [username]
 # To identify myself
 whoami
 
+# Create a user, by default also creates a group with the same name of the user.
+adduser [username]
+
+# Create a group
+addgroup [group-name]
+
+# Change the principal group of the user
+usermod -g [group-name]
+
+# Change propietary of a file, you need to be root
+# chown means change owner 
+chown [new-username]:[new-group-name]
+
+# Change password, root can change password of any user
+passwd [username]
+
+# Permissions on Files
+# --------------------
+# r: read permission
+# w: write permission
+# x: execute permission
+
+# -rw-rw-rw- fie-name
+# The first 3 spaces indicates user permissions.
+# The second ones indicates group permissions.
+# The last ones indicates others permissions.
+# The order is always r, w, x
+
+# Permissions on Directories
+# --------------------------
+# d: directory
+# r: list content
+# w: modify content (delete included)
+# x: access to content
+
+# Given Permissions
+-------------------
+# u: permissions only for users
+# g: permissions only for groups
+# o: permissions for others
+# a: By default change permissions for all (u, g, o)
+
+# Provide permission
+--------------------
+chmod +r [file-name]
+chmod u+r [file-name]
+chmod u+r, g+x [file-name]
+chmod u=w, o=rx [file-name]
+
+# Using binary numbers
+rw- r-- --- 110 100 000
+in octal 640 
+chmod 640 [file-name]
 
 
+# Remove Permissions
+--------------------
+chmod -r Permissions
