@@ -126,3 +126,35 @@ chmod 640 [file-name]
 # Remove Permissions
 --------------------
 chmod -r Permissions
+
+# -------------------------------------------------
+# LINUX COMMANDS 
+# -------------------------------------------------
+
+# Find files inside a folder that follows a pattern
+# [options]
+# type d: directory || f: file
+# size +/- (k kilobytes, M megabytes , G gigabytes)
+# perm [number]
+find [path] [options] -type d 
+find . -iname "carta*" -type d -size +1k
+
+# searching by permission on files
+find . -perm 400 
+
+# -exec allows to define a command to be executed for each result of the searching list.
+# {} is replaced with the name of the files and ; indicates the end of the command
+
+find /etc/ -iname '*.conf' -size 1M -exec cp '{}' /home/copias/ ';'
+
+# -------------------------------------------------
+# PACKAGE MANAGER COMMANDS 
+# -------------------------------------------------
+apt: use repositories where .deb packages are located 
+update: update information about the packages located in the repository
+install: install one or many packages
+remove: uninstall a package
+updgrade: update all our installed packages
+dist-updgrade: update the version to the last one we have in the repository
+clean: delete .deb packages stored in disk
+
