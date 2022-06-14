@@ -144,7 +144,6 @@ find . -perm 400
 
 # -exec allows to define a command to be executed for each result of the searching list.
 # {} is replaced with the name of the files and ; indicates the end of the command
-
 find /etc/ -iname '*.conf' -size 1M -exec cp '{}' /home/copias/ ';'
 
 # -------------------------------------------------
@@ -158,3 +157,73 @@ updgrade: update all our installed packages
 dist-updgrade: update the version to the last one we have in the repository
 clean: delete .deb packages stored in disk
 
+# -------------------------------------------------
+# MANAGING TEXT
+# -------------------------------------------------
+
+#--------
+# echo
+#--------
+# man echo to see documentation
+# echo: show the text it receives
+# -e: interpreted special characters after \ (backslash)
+# echo with double quotes interprets enviroment variables, though with single quotes enviroment variable is not interpreted
+
+#--------
+# cat
+#--------
+# cat: allows you to concatenate text files, also used to display text file content
+# -n: show the line number in the file
+cat -n 10 [file-name]
+
+#--------
+# more
+#--------
+# more: show the text part by part. Space used to move screen. Intro to move to next line. With q exit and with h for help.
+more [file-name]
+
+#--------
+# less
+#--------
+# less: do the same as more with more funtionalities, is optimized for big text files
+less [file-name]
+
+#--------
+# head
+#--------
+# head: shows the first lines of the text file, by default 10.
+# -n: parameter used to set the number of lines to show.
+head -n 10 [file-name]
+
+#--------
+# tail
+#--------
+# tail: shows the last lines of the text file, by default 10.
+# -n: parameter used to set the number of lines to show.
+tail -n 10 [file-name]
+
+#--------
+# cut
+#--------
+# cut: shows only a part of each line. vertical cut
+# -c: only select characters that we indicate
+# -d: delimiter character, then we need to specify the column
+# -f: select the column you want
+# cut -c 1,5 /etc/passwd
+# cut -c 1-5,6-10 /etc/passwd
+# cut -d "," -f 2 RENTA_ALTA_20220601.csv
+
+#--------
+# grep
+#--------
+# grep: show the lines that match the pattern
+# -v: this prints out all the lines that do not matches the pattern
+# -l: displays list of a filenames only.
+# -w: match whole word
+# -n: display the matched lines and their line numbers.
+# -i: ignores, case for matching
+# -c: this prints only a count of the lines that match a pattern
+# -r: search recursively  
+grep [word] [options] [path]
+grep root -l /var/log/*.log
+grep ACEPTA -w *
