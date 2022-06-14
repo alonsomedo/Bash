@@ -161,50 +161,50 @@ clean: delete .deb packages stored in disk
 # MANAGING TEXT
 # -------------------------------------------------
 
-#--------
+# --------
 # echo
-#--------
+# --------
 # man echo to see documentation
 # echo: show the text it receives
 # -e: interpreted special characters after \ (backslash)
 # echo with double quotes interprets enviroment variables, though with single quotes enviroment variable is not interpreted
 
-#--------
+# --------
 # cat
-#--------
+# --------
 # cat: allows you to concatenate text files, also used to display text file content
 # -n: show the line number in the file
 cat -n 10 [file-name]
 
-#--------
+# --------
 # more
-#--------
+# --------
 # more: show the text part by part. Space used to move screen. Intro to move to next line. With q exit and with h for help.
 more [file-name]
 
-#--------
+# --------
 # less
-#--------
+# --------
 # less: do the same as more with more funtionalities, is optimized for big text files
 less [file-name]
 
-#--------
+# --------
 # head
-#--------
+# --------
 # head: shows the first lines of the text file, by default 10.
 # -n: parameter used to set the number of lines to show.
 head -n 10 [file-name]
 
-#--------
+# --------
 # tail
-#--------
+# --------
 # tail: shows the last lines of the text file, by default 10.
 # -n: parameter used to set the number of lines to show.
 tail -n 10 [file-name]
 
-#--------
+# --------
 # cut
-#--------
+# --------
 # cut: shows only a part of each line. vertical cut
 # -c: only select characters that we indicate
 # -d: delimiter character, then we need to specify the column
@@ -213,9 +213,9 @@ tail -n 10 [file-name]
 # cut -c 1-5,6-10 /etc/passwd
 # cut -d "," -f 2 RENTA_ALTA_20220601.csv
 
-#--------
+# --------
 # grep
-#--------
+# --------
 # grep: show the lines that match the pattern
 # -v: this prints out all the lines that do not matches the pattern
 # -l: displays list of a filenames only.
@@ -227,3 +227,55 @@ tail -n 10 [file-name]
 grep [word] [options] [path]
 grep root -l /var/log/*.log
 grep ACEPTA -w *
+
+# --------
+# sort
+# --------
+# sort: order rows in alphabetic
+# r: reverse mode
+# n: -n Option: To sort a file numerically used –n option. -n option is also predefined in Unix as the above options are. This option is used to sort the file with numeric data present inside. 
+sort [options] [file]
+
+# --------
+# uniq
+# --------
+# uniq: print only unique lines without duplicates, that are next to each other
+# -i: ignores case
+# -d: It only prints the repeated lines and not the lines which aren’t repeated.
+# -c: It tells how many times a line was repeated by displaying a number as a prefix with the line.
+uniq [options] [file]
+uniq -i nombres.txt
+
+# --------
+# wc
+# --------
+# wc: word count 
+# -l: only lines 
+# -w: only words
+# -m: only characters
+wc -l [file] 
+
+# --------
+# rev
+# --------
+# rev: command in Linux is used to reverse the lines characterwise. This utility basically reverses the order of the characters in each line by copying the specified files to the standard output. 
+
+
+# ----------------------------------
+# Redirects: input, output and error
+# ----------------------------------
+# >   : overwrite file with stdout
+# >>  : append to file with stdout 
+# 2>  : overwrite error msg stderr
+# 2>> : append error msg stderr
+# &>  : overwrite file with stdout and stderr
+# &>>  : overwrite file with stdout and stderr
+
+
+# ----------------------------------
+# Pipes
+# ----------------------------------
+# You can concatenate commands 
+grep ^a /etc/passwd | cut -d":" -f1 | wc
+du -sh /* 2> /dev/null | sort -hr
+du -sh /* 2> /dev/null | sort -hr | head -n 1
