@@ -279,3 +279,49 @@ wc -l [file]
 grep ^a /etc/passwd | cut -d":" -f1 | wc
 du -sh /* 2> /dev/null | sort -hr
 du -sh /* 2> /dev/null | sort -hr | head -n 1
+
+# --------
+# tr
+# --------
+# tr: is a command line utility for translating or deleting characters. It supports a range of transformations including uppercase to lowercase, squeezing repeating characters, deleting specific characters and basic find and replace.
+# -d: deletes the letter
+# -s: deletes duplicates
+tr [OPTION] SET1 [SET2]
+echo casa > fichero.txt
+tr ac en < fichero.txt
+tr [:lower:] [:upper:] < ficherotr.txt > upper.txt
+cat upper.txt | tr -d A
+ls -lh . | tr -s " " | cut -d" " -f2
+
+# --------
+# sed
+# --------
+# SED command in UNIX stands for stream editor and it can perform lots of functions on file like searching, find and replace, insertion or deletion. Though most common use of SED command in UNIX is for substitution or for find and replace. By using SED you can edit files even without opening them, which is much quicker way to find and replace something in file, than first opening that file in VI Editor and then changing it.
+# SED is a powerful text stream editor. Can do insertion, deletion, search and replace(substitution).
+# SED command in unix supports regular expression which allows it perform complex pattern matching.
+# -n : avoid display in std
+# -e : indicates to execute script
+# -f : commands will be taken from a file
+# -r : extends regular expressions
+
+sed [-n] [-e'script'] [-f archivo] archivo1 archivo2
+
+# Script Syntax 
+# [initial_locationp[, end_location]] instruction [arguments]
+
+# Instruction
+# i\: insert before current line
+# a\: insert after current line 
+# c\: replace current line by the next one specified
+# d: delete current line
+# p: print current line in standart output
+# s/: substitute current line 
+# !: apply instruction to not selected lines
+
+
+sed -e '/cayeron/d' manos.txt
+sed -e '5,/manos/d' manos.txt 
+sed -e '1i\Hola Alonso\' manos.txt
+sed -n -e '2,4p' manos.txt
+sed -e '1i\Hola Alonso' -e '1a\Hola Juan' manos.txt
+sed -e 's/manos/PIES/' manos.txt
