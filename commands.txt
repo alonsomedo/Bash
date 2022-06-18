@@ -316,6 +316,7 @@ sed [-n] [-e'script'] [-f archivo] archivo1 archivo2
 # d: delete current line
 # p: print current line in standart output
 # s/: substitute current line 
+# /g: (global replacement)
 # !: apply instruction to not selected lines
 
 
@@ -325,3 +326,89 @@ sed -e '1i\Hola Alonso\' manos.txt
 sed -n -e '2,4p' manos.txt
 sed -e '1i\Hola Alonso' -e '1a\Hola Juan' manos.txt
 sed -e 's/manos/PIES/' manos.txt
+
+
+# --------
+# REGEX
+# --------
+
+^ : start of the line
+$ : end of the line 
+. : any character
+if we want to disable the effect of this special characters we need to use "\" before them.
+[] : brackets are used to indicate that in a specific position can appear a set of characters.
+
+# Classes
+# [:alnum:] : letters and digits
+# [:alpha:] : letters
+# [:white-spaces:] : espacios en blanco
+# [:space:] : blank spaces in horizontal and vertical
+# [:digit:] : digits
+
+# Exclude 
+# [^abc] : in this position all leter are available except a, b or c
+
+# Ranges
+# [0-5]
+# [A-Z]
+# [a-z]
+# [3-8[:upper:]mty]
+
+grep [A-Z][a-e].a countries.csv
+grep [A-Z][a-e].a countries.csv
+grep "^[[:upper:]]a" people.csv
+grep "^[[:upper:]]a" *
+grep "\.$"  *
+
+# Extended Regex (Repetitions)
+# X* : the asterisk match with zero or more repetitions of the regex that precedes.
+# X? : the interrogation match with zero or one of the regex that precedes.
+# X+ : the plus match with one or more repetitions of the regex that precedes.
+# X{n} : match exactly n repetitions of the regex that precedes.
+# X{n,} : match with n or more repetitions of the regex that precedes.
+# X{,n} : match with 0 or at most n repetitions of the regex that precedes.
+# x{n, m} : between n and m repetitions of the regex that precedes.
+
+grep -E -i  '^[a-z]{6}$' cities.csv
+grep -E -i  '^[a-z]{6,}$' cities.csv
+grep -E -i  '^[a-z]{6,}$' cities.csv
+
+# -------------------------------------------
+# OR, Parentheses, Abbreviations, Word Limits
+# -------------------------------------------
+
+# Or
+| : use or (|) operator to match with any of the regular expressions.
+
+# Parentheses
+() : use parentheses for grouping regular expressions or to specify what must be affected by a special character
+
+# Abbreviations
+\w : any alphanumeric character and underline 
+\W : the opossite of \w 
+
+# Word Limits
+\< : beggining of the word 
+\> : end of the word 
+\b : limit of the word start or end
+\B : the opossite of \b
+
+
+
+grep -E -i '^D.*n$|^S.*$' cities.csv # start with D and ends with N or start with S
+grep -E -i '(s[aeiou]){2}' countries.csv # string have two sequence of s and any letter 
+grep -E -i '\<a.*' countries.csv # a is the begining of the word
+sed -r 's/\b/-/g' carta_de_separacion.txt
+
+# -------------------------------------------
+# REFERENCES
+# -------------------------------------------
+
+# Use \n where n is a number between 1 and 9 to reference a grouping inside the own regular expression
+
+
+
+
+
+
+
