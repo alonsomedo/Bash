@@ -1,0 +1,9 @@
+Our first script
+
+# First line indicates the root path of the interpreter. It must start with #!
+# Example: #!/bin/bash
+
+You also can make some comments in your script using #. This lines are ignored by the interpreter.
+# For example this line is a commentarie if thist would be a script
+
+

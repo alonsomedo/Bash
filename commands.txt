@@ -393,8 +393,6 @@ grep -E -i  '^[a-z]{6,}$' cities.csv
 \b : limit of the word start or end
 \B : the opossite of \b
 
-
-
 grep -E -i '^D.*n$|^S.*$' cities.csv # start with D and ends with N or start with S
 grep -E -i '(s[aeiou]){2}' countries.csv # string have two sequence of s and any letter 
 grep -E -i '\<a.*' countries.csv # a is the begining of the word
@@ -405,10 +403,54 @@ sed -r 's/\b/-/g' carta_de_separacion.txt
 # -------------------------------------------
 
 # Use \n where n is a number between 1 and 9 to reference a grouping inside the own regular expression
+# Example ([aeiou]s)\1 means that the first letter must be a,e,i the second one is s and the third one is the same as the first one
 
 
+# -------------------------------------------
+# SHELL SCRIPTING
+# -------------------------------------------
 
+# -----------
+# Parameters
+# -----------
+# Can be send to a script, they are separated by a space.
+# $n : information abou the parameter where n in a number of parameter
+# $* : all the parameters. They are presented in a string, you can loop them to acces one by one
+# $@ : all the parameters. It is a list, each parameter is in a position of the list.
+# $# : the number of parameters with which the script has been invoked
 
+# -----------
+# Variables
+# -----------
+# Allow us to store information to access to it later.
+# Variables are alphanumeric but they can not start with a number.
+# Variables are sensitive case.
+# Is important to avoid spaces before and after the equivalence. variable="Hola"
+# To access to their content we need to use dollar symbol followed by the name of the variable
 
+# ---------------------
+# Pre-defined Variables
+# ---------------------
+# $0 : name of the script
+# $$ : PID of the process assigned to the script in execution time
+# $? : result from the last process executed
+# printenv : print enviroment variables.
 
+# ---------------------
+# Arrays 
+# ---------------------
+# Its a structured variabe that allow us to store data of the same type and related.
+# To access to the elements of the array you use an index
+# Elements are separated by a space
+# my_array=(data1 data2 data3)
+# To read ${my_array[index]} => echo ${my_array[0]} ${my_array[1]} ${my_array[-1]}
+# To display all elments at the same time ${my_array[*]}
+# To display the number of elements ${#my_array[@]}
+# To display indexes ${!my_array[@]}
+# To delete an element of the array unset  my_array[index]
 
+# ---------------------
+# read 
+# ---------------------
+# the same as input in python
+# -p  use it to send a message before to capture the variable , you should use double quotes
