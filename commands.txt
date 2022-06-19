@@ -454,3 +454,58 @@ sed -r 's/\b/-/g' carta_de_separacion.txt
 # ---------------------
 # the same as input in python
 # -p  use it to send a message before to capture the variable , you should use double quotes
+
+# ---------------------
+# test
+# ---------------------
+# to validate if a expression is true or false
+
+# numeric comparation
+# -eq : equal
+# -ge : greater or equal 
+# -gt : greater than
+# -le : less or equal
+# -lt : less than
+# -ne : not equual
+# test 10 -gt 20  => [10 -gt 20]
+# test 'hola' = 'holita' => ['hola' = 'holita']
+# test -d /etc/ => [-d /etc/]
+
+# text comparation
+# = : equal 
+# > : string1 is greater than string2
+# < : string1 is less than string2
+# != : string1 is not equal to string2
+# -n STRING: true is the longitude of the string is greater than zero
+
+# and , or 
+# ! EXPRESION: denial 
+# EXPRESSION1 -a EXPRESSION2 : true if both expressions are true
+# EXPRESSION1 -o EXPRESSION2 : true if any expression is true
+
+# files and directories
+-d PATH : true if the path exists and its a directory
+-e PATH : true if the path exists 
+-f PATH : true if the path exists and its a file
+-w PATH : true if the path exists and its writable 
+-x PATH : true if the path exists and its executable
+-s PATH : true if the path exists and its size is greater than zero
+
+# test string with regular expressions
+[[ susto =~ ^(s|S|si|SI) ]]; echo $?
+[[ susto =~ ^(s|S|si|SI)$ ]]; echo $?
+[[ usuario@correo.online =~ .+@.+\..{3} ]]; echo $?
+[[ usuario@correo.online =~ ^[[:alpha:]]+@.+\..{3}$ ]]; echo $?
+
+# operations with content of a variable
+# ${#var} : display the length of the string
+# ${var:position} : start at the position specified until the end
+# ${var:position:longitude} :  start at the position specified until the longitude
+# ${var#pattern} : delete since the begining until it matchs the shortest pattern. If you use ## , delete the largest part.
+# ${var%pattern} : same as the previous example, but starts at the end
+# ${var/pattern/text_string} : sustitute the first occurence that matchs with the pattern by the text_string
+# ${var//pattern/text_string} : sustitute all the occurences that match with the pattern by the text_string
+
+echo ${#USER}
+echo ${USER:5:2}
+echo ${USER#*o}
